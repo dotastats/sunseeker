@@ -1,0 +1,53 @@
+// Grid setting
+$base-spacing: 6px;
+
+// Colors
+$white: #fff;
+$light-gray: #ccc;
+$gray: #a9a9a9;
+$medium-gray: #484848;
+$dark-gray: #474747;
+$dark: #1e2124;
+$dark-post: #d8d8d8;
+$gray-border: #979797;
+$black: #333;
+$red: #9e2719;
+
+$primary: #9E2719;
+$text: $dark-gray;
+$meta: $medium-gray;
+
+html {
+	color: $black;
+}
+
+hr {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 0;
+	border-top: 1px solid #eeeeee;
+}
+
+// PACE loading theme
+.pace {
+	-webkit-pointer-events: none;
+	pointer-events: none;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+.pace-inactive {
+	display: none;
+}
+
+.pace .pace-progress {
+	background: #29d;
+	position: fixed;
+	z-index: 2000;
+	top: 0;
+	right: 100%;
+	width: 100%;
+	height: 2px;
+}

@@ -1,0 +1,13 @@
+@import "settings/reset";
+@import "settings/default";
+@import "components/TableRow";
+@import "components/GroupMatch";
+@import "components/NavigationBar";
+@import "components/Footer";
+@import "components/Match";
+@import "components/Score";
+@import "utilities/position";
+
+.body {
+  background-color: grey;
+}
