@@ -10,22 +10,21 @@ import {
 
 import * as types from "../constants/actionTypes";
 
-const match = (
-  state = {
-    isFetching: false,
-    isLoadingMutualHistory: true,
-    isLoadingHistoryA: true,
-    isLoadingHistoryB: true,
-    matchDetail: {},
-    f10kHistoryA: {},
-    f10kHistoryB: {},
-    teamMatchHistoryA: [],
-    teamMatchHistoryB: [],
-    mutualHistory: [],
-    openData: {}
-  },
-  action
-) => {
+const initState = {
+  isFetching: false,
+  isLoadingMutualHistory: true,
+  isLoadingHistoryA: true,
+  isLoadingHistoryB: true,
+  matchDetail: {},
+  f10kHistoryA: {},
+  f10kHistoryB: {},
+  teamMatchHistoryA: [],
+  teamMatchHistoryB: [],
+  mutualHistory: [],
+  openData: {}
+};
+
+const match = (state = initState, action) => {
   switch (action.type) {
     case REQUEST_HISTORY_MATCH:
       return {
@@ -129,7 +128,7 @@ const match = (
       };
     case REQUEST_MATCH:
       return {
-        ...state,
+        ...initState,
         isFetching: true
       };
     case RECEIVE_MATCH:
