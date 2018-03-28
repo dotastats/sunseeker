@@ -1,7 +1,7 @@
 ## Dotastats Client
 
 1. yarn install
-2. yarn start
+2. yarn start:dev
 
 Build: `yarn build`.
 
