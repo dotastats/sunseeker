@@ -14,7 +14,7 @@ import slugify from "../helper/slugify";
 class TeamDetail extends Component {
   static propTypes = {
     match: PropTypes.shape({
-      params: PropTypes.shape({ id: PropTypes.string })
+      params: PropTypes.shape({ name: PropTypes.string })
     }),
     location: PropTypes.object.isRequired,
     teamDetail: PropTypes.object,
