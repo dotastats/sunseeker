@@ -8,6 +8,8 @@ import {
   RECEIVE_TEAM
 } from "../actions";
 
+import * as types from "../constants/actionTypes";
+
 const match = (
   state = {
     isFetching: false,
@@ -19,7 +21,8 @@ const match = (
     f10kHistoryB: {},
     teamMatchHistoryA: [],
     teamMatchHistoryB: [],
-    mutualHistory: []
+    mutualHistory: [],
+    openData: {}
   },
   action
 ) => {
@@ -135,6 +138,11 @@ const match = (
         isFetching: false,
         matchDetail: action.matchDetail,
         lastUpdated: action.receivedAt
+      };
+    case types.OPENDOTA_MATCH.SUCCESS:
+      return {
+        ...state,
+        openData: action.payload
       };
     default:
       return state;

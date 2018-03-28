@@ -1,5 +1,8 @@
+import axios from "axios";
 import serialize from "../helper/serialize";
 import config from "../../config";
+import { asyncActionCreator } from "./util";
+import * as types from "../constants/actionTypes";
 
 // match history for team page
 export const REQUEST_HISTORY = "REQUEST_HISTORY";
@@ -178,11 +181,17 @@ export const fetchMatch = id => dispatch => {
         )
       );
       if (json.matchDetail.game === "dota") {
+        dispatch(fetchOpenDota({ id: json.matchDetail.matchid }));
         dispatch(fetchTeam(json.matchDetail.teama, "teama"));
         dispatch(fetchTeam(json.matchDetail.teamb, "teamb"));
       }
     });
 };
+
+export const fetchOpenDota = asyncActionCreator(
+  types.OPENDOTA_MATCH,
+  params => () => axios.get(`https://api.opendota.com/api/matches/${params.id}`)
+);
 
 // Action to post feedback
 
