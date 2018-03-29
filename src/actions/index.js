@@ -114,7 +114,7 @@ export const receiveTeam = (json, side) => ({
 
 export const fetchTeam = (id, side) => dispatch => {
   dispatch(requestTeam(id));
-  return fetch(`${config.STATS_API}/team/${id}/f10k`)
+  return fetch(`${config.STATS_API}/team/${id}/f10k?limit=20`)
     .then(response => response.json())
     .then(json => dispatch(receiveTeam(json, side)));
 };

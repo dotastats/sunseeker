@@ -12,6 +12,7 @@ import {
 import Divider from "material-ui/Divider";
 import { List, ListItem } from "material-ui/List";
 import Moment from "react-moment";
+import heroList from "../mock/heroes";
 
 class F10KHistory extends Component {
   static propTypes = {
@@ -41,7 +42,7 @@ class F10KHistory extends Component {
   };
 
   render() {
-    const { f10kHistory, teamName } = this.props;
+    const { teamName, f10kHistory } = this.props;
 
     return (
       <Card style={{ marginTop: "10px" }}>
@@ -79,6 +80,39 @@ class F10KHistory extends Component {
                         </div>
                       }
                     />
+                    {match.picks_bans && match.picks_bans.length ? (
+                      <div className="u-padding-horizontal--12">
+                        <p>
+                          <b>Lineup</b>
+                        </p>
+                        <div>
+                          {match.teama}:{" "}
+                          {match.picks_bans
+                            .filter(item => item.is_pick && item.team == 0)
+                            .map(
+                              item =>
+                                heroList[
+                                  heroList.findIndex(
+                                    hero => hero.id == item.hero_id
+                                  )
+                                ].localized_name + " "
+                            )}
+                        </div>
+                        <div>
+                          {match.teamb}:{" "}
+                          {match.picks_bans
+                            .filter(item => item.is_pick && item.team == 1)
+                            .map(
+                              item =>
+                                heroList[
+                                  heroList.findIndex(
+                                    hero => hero.id == item.hero_id
+                                  )
+                                ].localized_name + " "
+                            )}
+                        </div>
+                      </div>
+                    ) : null}
                     <Divider inset={true} />
                   </div>
                 ))
