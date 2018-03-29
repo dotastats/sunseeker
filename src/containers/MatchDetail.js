@@ -10,12 +10,14 @@ import Footer from "../components/Footer";
 import ResultList from "../components/ResultList";
 import { fetchMatch } from "../actions";
 import Tick from "../components/images/Tick.png";
+import Loading from "../components/Loading";
 
 class MatchDetail extends Component {
   static propTypes = {
     match: PropTypes.shape({
       params: PropTypes.shape({ id: PropTypes.string })
     }),
+    isFetching: PropTypes.bool,
     matchDetail: PropTypes.object,
     matchHistoryA: PropTypes.array,
     matchHistoryB: PropTypes.array,
@@ -34,6 +36,7 @@ class MatchDetail extends Component {
 
   render() {
     const {
+      isFetching,
       matchDetail,
       matchHistoryA,
       matchHistoryB,
@@ -45,7 +48,15 @@ class MatchDetail extends Component {
       isLoadingMutualHistory
     } = this.props;
 
-    return (
+    return isFetching ? (
+      <div className="MatchDetail">
+        <div className="container">
+          <div className="Match col-md-12">
+            <Loading />
+          </div>
+        </div>
+      </div>
+    ) : (
       <div className="MatchDetail">
         <div className="container">
           <div className="Match col-md-12">
@@ -168,9 +179,13 @@ class MatchDetail extends Component {
                         </tr>
                       ))
                     ) : isLoadingMutualHistory ? (
-                      <p>Loading</p>
+                      <tr>
+                        <Loading />
+                      </tr>
                     ) : (
-                      <p>No mutual match</p>
+                      <tr>
+                        <td>No mutual match</td>
+                      </tr>
                     )}
                   </tbody>
                 </table>
@@ -185,9 +200,13 @@ class MatchDetail extends Component {
                     resultList={matchHistoryA}
                   />
                 ) : isLoadingHistoryA ? (
-                  <p>Loading</p>
+                  <tr>
+                    <Loading />
+                  </tr>
                 ) : (
-                  <p>No {matchDetail.teama} match</p>
+                  <tr>
+                    <td>No {matchDetail.teama} match</td>
+                  </tr>
                 )}
               </div>
               <div className="Score col-sm-6">
@@ -198,9 +217,13 @@ class MatchDetail extends Component {
                     resultList={matchHistoryB}
                   />
                 ) : isLoadingHistoryB ? (
-                  <p>Loading</p>
+                  <tr>
+                    <Loading />
+                  </tr>
                 ) : (
-                  <p>No match</p>
+                  <tr>
+                    <td>No match</td>
+                  </tr>
                 )}
               </div>
             </div>
@@ -278,17 +301,7 @@ class MatchDetail extends Component {
 
 const mapStateToProps = state => {
   return {
-    matchDetail: state.match.matchDetail,
-    mutualHistory: state.match.mutualHistory,
-    matchHistoryA: state.match.teamMatchHistoryA,
-    f10kHistoryA: state.match.f10kHistoryA,
-    f10kHistoryB: state.match.f10kHistoryB,
-    matchHistoryB: state.match.teamMatchHistoryB,
-    isLoadingHistoryA: state.match.isLoadingHistoryA,
-    isLoadingHistoryB: state.match.isLoadingHistoryB,
-    isLoadingF10kA: state.match.isLoadingF10kA,
-    isLoadingF10kB: state.match.isLoadingF10kB,
-    isLoadingMutualHistory: state.match.isLoadingMutualHistory
+    ...state.match
   };
 };
 
