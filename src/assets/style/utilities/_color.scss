@@ -1,12 +1,13 @@
 $colors: (
-  "vin-blue": $vin-blue,
-  "vin-green": $vin-green,
-  "vin-red": $vin-red,
-  "vin-orange": $vin-orange,
-  "black": $black,
   "white": $white,
   "light-gray": $light-gray,
-  "dark-blue": $dark-blue
+  "gray": $gray,
+  "medium-gray": $medium-gray,
+  "dark-gray": $dark-gray,
+  "$dark": $dark,
+  "black": $black,
+  "red": $red,
+  "primary": $primary
 );
 
 @each $key, $value in $colors {
