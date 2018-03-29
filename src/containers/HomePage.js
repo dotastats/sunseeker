@@ -4,12 +4,14 @@ import { connect } from "react-redux";
 import MatchesFilter from "./MatchesFilter";
 import Footer from "../components/Footer";
 import ListMatch from "../components/ListMatch";
+import Loading from "../components/Loading";
 import { fetchMatches } from "../actions";
 import dayBefore from "../helper/date";
 
 class HomePage extends Component {
   static propTypes = {
     listMatches: PropTypes.array.isRequired,
+    isFetching: PropTypes.array.isRequired,
     dispatch: PropTypes.func.isRequired
   };
 
@@ -25,14 +27,14 @@ class HomePage extends Component {
   }
 
   render() {
-    const { listMatches } = this.props;
+    const { listMatches, isFetching } = this.props;
     return (
       <div>
         <div className="container">
           <div className="row">
             <MatchesFilter />
           </div>
-          <ListMatch listMatches={listMatches} />
+          {isFetching ? <Loading /> : <ListMatch listMatches={listMatches} />}
         </div>
         <Footer />
       </div>
@@ -42,7 +44,7 @@ class HomePage extends Component {
 
 const mapStateToProps = state => {
   return {
-    listMatches: state.matches.listMatches
+    ...state.matches
   };
 };
 

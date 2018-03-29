@@ -9,9 +9,11 @@ class ListMatch extends Component {
 
   renderTableRows() {
     const { listMatches } = this.props;
-    return listMatches.map(i => (
-      <GroupMatch groupMatch={i} key={i.series_id} />
-    ));
+    return listMatches && listMatches.length ? (
+      listMatches.map(i => <GroupMatch groupMatch={i} key={i.series_id} />)
+    ) : (
+      <p>No data</p>
+    );
   }
 
   render() {
