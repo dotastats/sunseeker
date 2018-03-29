@@ -1,0 +1,31 @@
+$alignments: (left, center, right, justify);
+$transforms: (uppercase);
+
+@each $alignment in $alignments {
+  .u-text-align--#{$alignment} {
+    text-align: $alignment !important;
+  }
+}
+
+@each $transform in $transforms {
+  .u-text-transform--#{$transform} {
+    text-transform: $transform !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  @each $alignment in $alignments {
+    .u-sm-text-align--#{$alignment} {
+      text-align: $alignment !important;
+    }
+  }
+}
+
+
+@media screen and (min-width: 1160px) {
+  @each $alignment in $alignments {
+    .u-lg-text-align--#{$alignment} {
+      text-align: $alignment !important;
+    }
+  }
+}

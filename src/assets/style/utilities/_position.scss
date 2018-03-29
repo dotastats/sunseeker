@@ -1,7 +1,13 @@
-.u-position--relative {
-	position: relative !important;
-}
+$positions: (
+  relative,
+  absolute,
+  fixed,
+  initial,
+  inherit
+);
 
-.u-position--fixed {
-	position: fixed !important;
+@each $position in $positions {
+  .u-position--#{$position} {
+    position: $position !important;
+  }
 }

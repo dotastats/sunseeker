@@ -1,0 +1,35 @@
+$sizes: (12, 15, 20);
+$weights: (400, 700);
+
+@each $size in $sizes {
+  .u-font-size--#{$size} {
+    font-size: $size * 1px !important;
+  }
+  @media (min-width: 360px) {
+    .u-xxm-font-size--#{$size} {
+      font-size: $size * 1px !important;
+    }
+  }
+  @media (min-width: 400px) {
+    .u-xm-font-size--#{$size} {
+      font-size: $size * 1px !important;
+    }
+  }
+  @media (min-width: 768px) {
+    .u-sm-font-size--#{$size} {
+      font-size: $size * 1px !important;
+    }
+  }
+  @media (min-width: 1160px) {
+    .u-lg-font-size--#{$size} {
+      font-size: $size * 1px !important;
+    }
+  }
+}
+
+@each $weight in $weights {
+  .u-font-weight--#{$weight} {
+    font-weight: $weight !important;
+  }
+}
+

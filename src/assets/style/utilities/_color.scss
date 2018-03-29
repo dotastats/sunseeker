@@ -1,0 +1,16 @@
+$colors: (
+  "vin-blue": $vin-blue,
+  "vin-green": $vin-green,
+  "vin-red": $vin-red,
+  "vin-orange": $vin-orange,
+  "black": $black,
+  "white": $white,
+  "light-gray": $light-gray,
+  "dark-blue": $dark-blue
+);
+
+@each $key, $value in $colors {
+  .u-color--#{$key} {
+    color: $value !important;
+  }
+}

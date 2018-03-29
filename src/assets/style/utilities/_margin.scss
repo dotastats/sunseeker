@@ -1,0 +1,89 @@
+$values: (0, 6, 12, 14, 18, 24, 30, 40, 48, 60);
+
+@each $value in $values {
+  .u-margin--auto {
+    margin: auto !important;
+  }
+}
+
+@each $value in $values {
+  .u-margin--auto-horizontal {
+    margin: auto !important;
+  }
+}
+
+@each $value in $values {
+  .u-margin-bottom--#{$value} {
+    margin-bottom: $value * 1px !important;
+  }
+}
+
+@each $value in $values {
+  .u-margin-top--#{$value} {
+    margin-top: $value * 1px !important;
+  }
+}
+
+@each $value in $values {
+  .u-margin-both--#{$value} {
+    margin-top: $value * 1px !important;
+    margin-bottom: $value * 1px !important;
+  }
+}
+
+@each $value in $values {
+  .u-margin-right--#{$value} {
+    margin-right: $value * 1px !important;
+  }
+
+  .u-margin-left--#{$value} {
+    margin-left: $value * 1px !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  @each $value in $values {
+    .u-sm-margin-bottom--#{$value} {
+      margin-bottom: $value * 1px !important;
+    }
+  }
+  @each $value in $values {
+    .u-sm-margin-both--#{$value} {
+      margin-top: $value * 1px !important;
+      margin-bottom: $value * 1px !important;
+    }
+  }
+
+  @each $value in $values {
+    .u-sm-margin-right--#{$value} {
+      margin-right: $value * 1px !important;
+    }
+  }
+
+  @each $value in $values {
+    .u-sm-margin-top--#{$value} {
+      margin-top: $value * 1px !important;
+    }
+  }
+}
+
+@media screen and (min-width: 1160px) {
+  @each $value in $values {
+    .u-lg-margin-bottom--#{$value} {
+      margin-bottom: $value * 1px !important;
+    }
+  }
+
+  @each $value in $values {
+    .u-lg-margin-both--#{$value} {
+      margin-top: $value * 1px !important;
+      margin-bottom: $value * 1px !important;
+    }
+  }
+
+  @each $value in $values {
+    .u-lg-margin-right--#{$value} {
+      margin-right: $value * 1px !important;
+    }
+  }
+}

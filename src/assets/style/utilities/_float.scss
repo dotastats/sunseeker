@@ -1,0 +1,7 @@
+$positions: (right, left);
+
+@each $position in $positions {
+  .u-pull--#{$position} {
+    float: $position !important;
+  }
+}

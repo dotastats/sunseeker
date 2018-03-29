@@ -1,0 +1,14 @@
+@for $i from 1 through $num-of-columns {
+  .col-#{$i} {
+    flex: 0 0 (10% * $i);
+    &--icon {
+      align-self: center;
+      text-align: right;
+    }
+    &:last-child {
+      .item__input-place {
+        margin-right: 0px;
+      }
+    }
+  }
+}
