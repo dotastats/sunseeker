@@ -157,38 +157,38 @@ class MatchDetail extends Component {
             <div className="ScoreGroup">
               <div className="col-sm-12">
                 <h4>Versus history</h4>
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Games</th>
-                      <th>Match name</th>
-                      <th>Winner</th>
-                      <th>Time</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {Array.isArray(mutualHistory) && mutualHistory.length ? (
-                      mutualHistory.slice(0, 10).map(game => (
-                        <tr key={game.id}>
-                          <td>{game.tournament}</td>
-                          <td>{game.matchname}</td>
-                          <td>{game.winner}</td>
-                          <td>
-                            <Moment fromNow>{game.time}</Moment>
-                          </td>
+                {isLoadingMutualHistory ? (
+                  <Loading />
+                ) : (
+                  <table className="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Games</th>
+                        <th>Match name</th>
+                        <th>Winner</th>
+                        <th>Time</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {Array.isArray(mutualHistory) && mutualHistory.length ? (
+                        mutualHistory.slice(0, 10).map(game => (
+                          <tr key={game.id}>
+                            <td>{game.tournament}</td>
+                            <td>{game.matchname}</td>
+                            <td>{game.winner}</td>
+                            <td>
+                              <Moment fromNow>{game.time}</Moment>
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td>No mutual match</td>
                         </tr>
-                      ))
-                    ) : isLoadingMutualHistory ? (
-                      <tr>
-                        <Loading />
-                      </tr>
-                    ) : (
-                      <tr>
-                        <td>No mutual match</td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
+                      )}
+                    </tbody>
+                  </table>
+                )}
               </div>
             </div>
             <div className="ScoreGroup">
@@ -200,13 +200,11 @@ class MatchDetail extends Component {
                     resultList={matchHistoryA}
                   />
                 ) : isLoadingHistoryA ? (
-                  <tr>
-                    <Loading />
-                  </tr>
+                  <Loading />
                 ) : (
-                  <tr>
-                    <td>No {matchDetail.teama} match</td>
-                  </tr>
+                  <p>
+                    No <b>{matchDetail.teama}</b> match
+                  </p>
                 )}
               </div>
               <div className="Score col-sm-6">
@@ -217,13 +215,11 @@ class MatchDetail extends Component {
                     resultList={matchHistoryB}
                   />
                 ) : isLoadingHistoryB ? (
-                  <tr>
-                    <Loading />
-                  </tr>
+                  <Loading />
                 ) : (
-                  <tr>
-                    <td>No match</td>
-                  </tr>
+                  <p>
+                    No <b>{matchDetail.teamb}</b> match
+                  </p>
                 )}
               </div>
             </div>

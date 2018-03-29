@@ -12,6 +12,7 @@ const matches = (
     case REQUEST_MATCHES:
       return {
         ...state,
+        listMatches: [],
         isFetching: true,
         requestParams: action.params
       };
