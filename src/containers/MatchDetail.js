@@ -19,8 +19,8 @@ class MatchDetail extends Component {
     }),
     isFetching: PropTypes.bool,
     matchDetail: PropTypes.object,
-    matchHistoryA: PropTypes.array,
-    matchHistoryB: PropTypes.array,
+    teamMatchHistoryA: PropTypes.array,
+    teamMatchHistoryB: PropTypes.array,
     mutualHistory: PropTypes.array,
     f10kHistoryA: PropTypes.object,
     f10kHistoryB: PropTypes.object,
@@ -208,7 +208,7 @@ class MatchDetail extends Component {
                 )}
               </div>
               <div className="Score col-sm-6">
-                {isLoadingHistoryA ? (
+                {isLoadingHistoryB ? (
                   <Loading />
                 ) : teamMatchHistoryB && teamMatchHistoryB.length ? (
                   <ResultList
