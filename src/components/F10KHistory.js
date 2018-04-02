@@ -57,7 +57,10 @@ class F10KHistory extends Component {
           <List>
             {f10kHistory
               ? f10kHistory.map(match => (
-                  <div key={f10kHistory.indexOf(match)}>
+                  <div
+                    key={f10kHistory.indexOf(match)}
+                    style={{ borderBottom: "1px solid gray" }}
+                  >
                     <ListItem
                       primaryText={match.matchname}
                       leftAvatar={
@@ -81,35 +84,43 @@ class F10KHistory extends Component {
                       }
                     />
                     {match.picks_bans && match.picks_bans.length ? (
-                      <div className="u-padding-horizontal--12">
-                        <p>
+                      <div className="u-padding--12 row">
+                        <p className="u-padding-horizontal--24 u-margin-bottom--12">
                           <b>Lineup</b>
                         </p>
-                        <div>
-                          {match.teama}:{" "}
-                          {match.picks_bans
-                            .filter(item => item.is_pick && item.team == 0)
-                            .map(
-                              item =>
-                                heroList[
-                                  heroList.findIndex(
-                                    hero => hero.id == item.hero_id
-                                  )
-                                ].localized_name + " "
-                            )}
+                        <div className="u-margin-bottom--6 col-sm-12">
+                          <div className="col-sm-3">{match.teama}: </div>
+                          <div className="col-sm-9">
+                            {match.picks_bans
+                              .filter(item => item.is_pick && item.team == 0)
+                              .map(item => (
+                                <img
+                                  key={item.match_id + item.ord}
+                                  src={`http://cdn.steamstatic.com/apps/dota2/images/heroes/${heroList[
+                                    heroList.findIndex(
+                                      hero => hero.id == item.hero_id
+                                    )
+                                  ].name.replace("npc_dota_hero_", "")}_sb.png`}
+                                />
+                              ))}
+                          </div>
                         </div>
-                        <div>
-                          {match.teamb}:{" "}
-                          {match.picks_bans
-                            .filter(item => item.is_pick && item.team == 1)
-                            .map(
-                              item =>
-                                heroList[
-                                  heroList.findIndex(
-                                    hero => hero.id == item.hero_id
-                                  )
-                                ].localized_name + " "
-                            )}
+                        <div className="u-margin-bottom--6 col-sm-12">
+                          <div className="col-sm-3">{match.teamb}: </div>
+                          <div className="col-sm-9">
+                            {match.picks_bans
+                              .filter(item => item.is_pick && item.team == 1)
+                              .map(item => (
+                                <img
+                                  key={item.match_id + item.ord}
+                                  src={`http://cdn.steamstatic.com/apps/dota2/images/heroes/${heroList[
+                                    heroList.findIndex(
+                                      hero => hero.id == item.hero_id
+                                    )
+                                  ].name.replace("npc_dota_hero_", "")}_sb.png`}
+                                />
+                              ))}
+                          </div>
                         </div>
                       </div>
                     ) : null}
