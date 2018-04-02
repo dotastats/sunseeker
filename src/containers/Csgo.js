@@ -5,11 +5,13 @@ import MatchesFilter from "./MatchesFilter";
 import ListMatch from "../components/ListMatch";
 import { fetchMatches } from "../actions";
 import dayBefore from "../helper/date";
+import Loading from "../components/Loading";
 
 class Csgo extends Component {
   static propTypes = {
     listMatches: PropTypes.array.isRequired,
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool
   };
 
   componentDidMount() {
@@ -24,14 +26,20 @@ class Csgo extends Component {
   }
 
   render() {
-    const { listMatches } = this.props;
+    const { listMatches, isFetching } = this.props;
     return (
       <div>
         <div className="container">
           <div className="row">
             <MatchesFilter />
           </div>
-          <ListMatch listMatches={listMatches} />
+          {isFetching ? (
+            <Loading />
+          ) : listMatches && listMatches.length ? (
+            <ListMatch listMatches={listMatches} />
+          ) : (
+            <p>No data</p>
+          )}
         </div>
       </div>
     );
@@ -40,7 +48,7 @@ class Csgo extends Component {
 
 const mapStateToProps = state => {
   return {
-    listMatches: state.matches.listMatches
+    ...state.matches
   };
 };
 

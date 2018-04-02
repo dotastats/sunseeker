@@ -34,7 +34,13 @@ class HomePage extends Component {
           <div className="row">
             <MatchesFilter />
           </div>
-          {isFetching ? <Loading /> : <ListMatch listMatches={listMatches} />}
+          {isFetching ? (
+            <Loading />
+          ) : listMatches && listMatches.length ? (
+            <ListMatch listMatches={listMatches} />
+          ) : (
+            <p>No data</p>
+          )}
         </div>
         <Footer />
       </div>
