@@ -192,99 +192,103 @@ class MatchDetail extends Component {
               </div>
             </div>
             <div className="ScoreGroup">
-              <div className="Score col-sm-6">
-                {isLoadingHistoryA ? (
-                  <Loading />
-                ) : teamMatchHistoryA && teamMatchHistoryA.length ? (
-                  <ResultList
-                    teamName={matchDetail.teama.toLowerCase()}
-                    title={`${matchDetail.teama} matches history`}
-                    resultList={teamMatchHistoryA}
-                  />
-                ) : (
-                  <p>
-                    No <b>{matchDetail.teama}</b> match
-                  </p>
-                )}
-              </div>
-              <div className="Score col-sm-6">
-                {isLoadingHistoryB ? (
-                  <Loading />
-                ) : teamMatchHistoryB && teamMatchHistoryB.length ? (
-                  <ResultList
-                    teamName={matchDetail.teamb.toLowerCase()}
-                    title={`${matchDetail.teamb} matches history`}
-                    resultList={teamMatchHistoryB}
-                  />
-                ) : (
-                  <p>
-                    No <b>{matchDetail.teamb}</b> match
-                  </p>
-                )}
+              <div className="col-sm-12">
+                <div className="Score col-sm-6">
+                  {isLoadingHistoryA ? (
+                    <Loading />
+                  ) : teamMatchHistoryA && teamMatchHistoryA.length ? (
+                    <ResultList
+                      teamName={matchDetail.teama.toLowerCase()}
+                      title={`${matchDetail.teama} matches history`}
+                      resultList={teamMatchHistoryA}
+                    />
+                  ) : (
+                    <p>
+                      No <b>{matchDetail.teama}</b> match
+                    </p>
+                  )}
+                </div>
+                <div className="Score col-sm-6">
+                  {isLoadingHistoryB ? (
+                    <Loading />
+                  ) : teamMatchHistoryB && teamMatchHistoryB.length ? (
+                    <ResultList
+                      teamName={matchDetail.teamb.toLowerCase()}
+                      title={`${matchDetail.teamb} matches history`}
+                      resultList={teamMatchHistoryB}
+                    />
+                  ) : (
+                    <p>
+                      No <b>{matchDetail.teamb}</b> match
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
             <div className="ScoreGroup">
-              <div className="Score col-sm-6">
-                {f10kHistoryA && Array.isArray(f10kHistoryA.matches) ? (
-                  <div className="F10kInfo">
-                    <Card initiallyExpanded>
-                      <CardHeader
-                        title="Statistics"
-                        actAsExpander
-                        style={{ backgroundColor: grey600 }}
-                        titleColor={grey50}
-                        showExpandableButton={true}
+              <div className="col-sm-12">
+                <div className="Score col-sm-6">
+                  {f10kHistoryA && Array.isArray(f10kHistoryA.matches) ? (
+                    <div className="F10kInfo">
+                      <Card initiallyExpanded>
+                        <CardHeader
+                          title="Statistics"
+                          actAsExpander
+                          style={{ backgroundColor: grey600 }}
+                          titleColor={grey50}
+                          showExpandableButton={true}
+                        />
+                        <CardText expandable={true}>
+                          <ul>
+                            <li>Average kill: {f10kHistoryA.avgkill}</li>
+                            <li>Average death: {f10kHistoryA.avgdeath}</li>
+                            <li>Total kill: {f10kHistoryA.totalkill}</li>
+                            <li>Total death: {f10kHistoryA.totaldeath}</li>
+                            <li>Winrate: {f10kHistoryA.winrate}</li>
+                            <li>Average odds: {f10kHistoryA.avgodds}</li>
+                          </ul>
+                        </CardText>
+                      </Card>
+                      <F10KHistory
+                        teamName={matchDetail.teama.toLowerCase()}
+                        f10kHistory={f10kHistoryA.matches}
                       />
-                      <CardText expandable={true}>
-                        <ul>
-                          <li>Average kill: {f10kHistoryA.avgkill}</li>
-                          <li>Average death: {f10kHistoryA.avgdeath}</li>
-                          <li>Total kill: {f10kHistoryA.totalkill}</li>
-                          <li>Total death: {f10kHistoryA.totaldeath}</li>
-                          <li>Winrate: {f10kHistoryA.winrate}</li>
-                          <li>Average odds: {f10kHistoryA.avgodds}</li>
-                        </ul>
-                      </CardText>
-                    </Card>
-                    <F10KHistory
-                      teamName={matchDetail.teama.toLowerCase()}
-                      f10kHistory={f10kHistoryA.matches}
-                    />
-                  </div>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div className="Score col-sm-6">
-                {f10kHistoryB && Array.isArray(f10kHistoryB.matches) ? (
-                  <div className="F10kInfo">
-                    <Card initiallyExpanded>
-                      <CardHeader
-                        title="Statistics"
-                        actAsExpander
-                        style={{ backgroundColor: grey600 }}
-                        titleColor={grey50}
-                        showExpandableButton={true}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div className="Score col-sm-6">
+                  {f10kHistoryB && Array.isArray(f10kHistoryB.matches) ? (
+                    <div className="F10kInfo">
+                      <Card initiallyExpanded>
+                        <CardHeader
+                          title="Statistics"
+                          actAsExpander
+                          style={{ backgroundColor: grey600 }}
+                          titleColor={grey50}
+                          showExpandableButton={true}
+                        />
+                        <CardText expandable={true}>
+                          <ul>
+                            <li>Average kill: {f10kHistoryB.avgkill}</li>
+                            <li>Average death: {f10kHistoryB.avgdeath}</li>
+                            <li>Total kill: {f10kHistoryB.totalkill}</li>
+                            <li>Total death: {f10kHistoryB.totaldeath}</li>
+                            <li>Winrate: {f10kHistoryB.winrate}</li>
+                            <li>Average odds: {f10kHistoryB.avgodds}</li>
+                          </ul>
+                        </CardText>
+                      </Card>
+                      <F10KHistory
+                        teamName={matchDetail.teamb.toLowerCase()}
+                        f10kHistory={f10kHistoryB.matches}
                       />
-                      <CardText expandable={true}>
-                        <ul>
-                          <li>Average kill: {f10kHistoryB.avgkill}</li>
-                          <li>Average death: {f10kHistoryB.avgdeath}</li>
-                          <li>Total kill: {f10kHistoryB.totalkill}</li>
-                          <li>Total death: {f10kHistoryB.totaldeath}</li>
-                          <li>Winrate: {f10kHistoryB.winrate}</li>
-                          <li>Average odds: {f10kHistoryB.avgodds}</li>
-                        </ul>
-                      </CardText>
-                    </Card>
-                    <F10KHistory
-                      teamName={matchDetail.teamb.toLowerCase()}
-                      f10kHistory={f10kHistoryB.matches}
-                    />
-                  </div>
-                ) : (
-                  ""
-                )}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
             </div>
           </div>

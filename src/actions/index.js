@@ -45,7 +45,7 @@ export const receiveHistoryMatch = (json, side) => ({
 
 export const fetchHistoryMatch = (id, side, game) => dispatch => {
   dispatch(requestHistoryMatch(id, side));
-  return fetch(`${config.STATS_API}/team/${id}?game=${game}`)
+  return fetch(`${config.STATS_API}/team/${id}?game=${game}&limit=20`)
     .then(response => response.json())
     .then(json => dispatch(receiveHistoryMatch(json, side)));
 };
