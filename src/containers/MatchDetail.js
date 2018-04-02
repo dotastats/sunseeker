@@ -61,7 +61,7 @@ class MatchDetail extends Component {
         <div className="container">
           <div className="Match col-md-12">
             <div className="Match-title row">
-              <div className="col-md-6">
+              <div className="col-md-8">
                 {matchDetail.game
                   ? `${matchDetail.game.toUpperCase()}  - ${
                       matchDetail.tournament
@@ -69,8 +69,19 @@ class MatchDetail extends Component {
                   : `Game - ${matchDetail.tournament} - ${
                       matchDetail.mode_name
                     }`}
+                {matchDetail.matchid ? (
+                  <Link
+                    to={`https://www.opendota.com/matches/${
+                      matchDetail.matchid
+                    }`}
+                    target="_blank"
+                  >
+                    {" "}
+                    OpenDota
+                  </Link>
+                ) : null}
               </div>
-              <div className="col-md-6 text-right">
+              <div className="col-md-4 text-right">
                 {matchDetail.status === "Live" ? (
                   <span>Live</span>
                 ) : (
