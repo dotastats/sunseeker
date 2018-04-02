@@ -11,7 +11,7 @@ import dayBefore from "../helper/date";
 class HomePage extends Component {
   static propTypes = {
     listMatches: PropTypes.array.isRequired,
-    isFetching: PropTypes.array.isRequired,
+    isFetching: PropTypes.bool,
     dispatch: PropTypes.func.isRequired
   };
 

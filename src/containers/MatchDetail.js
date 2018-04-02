@@ -38,8 +38,8 @@ class MatchDetail extends Component {
     const {
       isFetching,
       matchDetail,
-      matchHistoryA,
-      matchHistoryB,
+      teamMatchHistoryA,
+      teamMatchHistoryB,
       mutualHistory,
       f10kHistoryA,
       f10kHistoryB,
@@ -193,14 +193,14 @@ class MatchDetail extends Component {
             </div>
             <div className="ScoreGroup">
               <div className="Score col-sm-6">
-                {Array.isArray(matchHistoryA) && matchHistoryA.length ? (
+                {isLoadingHistoryA ? (
+                  <Loading />
+                ) : teamMatchHistoryA && teamMatchHistoryA.length ? (
                   <ResultList
                     teamName={matchDetail.teama.toLowerCase()}
                     title={`${matchDetail.teama} matches history`}
-                    resultList={matchHistoryA}
+                    resultList={teamMatchHistoryA}
                   />
-                ) : isLoadingHistoryA ? (
-                  <Loading />
                 ) : (
                   <p>
                     No <b>{matchDetail.teama}</b> match
@@ -208,14 +208,14 @@ class MatchDetail extends Component {
                 )}
               </div>
               <div className="Score col-sm-6">
-                {Array.isArray(matchHistoryB) && matchHistoryB.length ? (
+                {isLoadingHistoryA ? (
+                  <Loading />
+                ) : teamMatchHistoryB && teamMatchHistoryB.length ? (
                   <ResultList
                     teamName={matchDetail.teamb.toLowerCase()}
                     title={`${matchDetail.teamb} matches history`}
-                    resultList={matchHistoryB}
+                    resultList={teamMatchHistoryB}
                   />
-                ) : isLoadingHistoryB ? (
-                  <Loading />
                 ) : (
                   <p>
                     No <b>{matchDetail.teamb}</b> match
