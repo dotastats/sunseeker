@@ -7,8 +7,17 @@ class GroupMatch extends Component {
     groupMatch: PropTypes.object
   };
 
+  state = {
+    showAll: false
+  };
+
+  toggleShowAll = () => {
+    this.setState({ showAll: !this.state.showAll });
+  };
+
   renderTableRow() {
     const { groupMatch } = this.props;
+    const { showAll } = this.state;
     var t = {};
     for (let match in groupMatch.matches) {
       if (groupMatch.matches[match].mode_name === "Match Winner") {
@@ -20,9 +29,26 @@ class GroupMatch extends Component {
     if (!Object.keys(t).length) {
       groupMatch.matches[0].expand = true;
     }
-    return groupMatch.matches.map(i => (
-      <TableRow match={i} key={i.id.toString()} />
-    ));
+    return showAll ? (
+      groupMatch.matches.map(
+        (item, index) =>
+          index === 0 ? (
+            <TableRow
+              toggleShowAll={() => this.toggleShowAll()}
+              showAll={showAll}
+              match={item}
+              key={item.id.toString()}
+            />
+          ) : (
+            <TableRow match={item} key={item.id.toString()} />
+          )
+      )
+    ) : (
+      <TableRow
+        toggleShowAll={() => this.toggleShowAll()}
+        match={groupMatch.matches[0]}
+      />
+    );
   }
 
   render() {
