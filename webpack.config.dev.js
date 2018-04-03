@@ -4,10 +4,7 @@ import path from "path";
 
 export default {
   resolve: {
-    extensions: ["*", ".js", ".jsx", ".json"],
-    alias: {
-      pace: "pace-progress"
-    }
+    extensions: ["*", ".js", ".jsx", ".json"]
   },
   devtool: "cheap-module-eval-source-map", // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
   entry: [
@@ -15,7 +12,6 @@ export default {
     "./src/webpack-public-path",
     "react-hot-loader/patch",
     "webpack-hot-middleware/client?reload=true",
-    "pace-progress/pace.min.js",
     path.resolve(__dirname, "src/index.js") // Defining path seems necessary for this to work consistently on Windows machines.
   ],
   target: "web",

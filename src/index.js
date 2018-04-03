@@ -7,7 +7,6 @@ import configureStore, { history } from "./store/configureStore";
 import Root from "./components/Root";
 import "./assets/style/main.scss";
 require("./assets/js/widgets");
-require("pace-progress/pace.min.js");
 require("./favicon.ico"); // Tell webpack to load favicon.ico
 const store = configureStore();
 
