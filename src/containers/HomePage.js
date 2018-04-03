@@ -18,7 +18,7 @@ class HomePage extends Component {
   componentDidMount() {
     this.props.dispatch(
       fetchMatches({
-        limit: 30,
+        limit: 100,
         time_from: dayBefore(),
         game: "all",
         status: "all"
