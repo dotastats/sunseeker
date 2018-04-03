@@ -7,7 +7,9 @@ import Tick from "./images/Tick.png";
 
 class TableRow extends Component {
   static propTypes = {
-    match: PropTypes.object
+    match: PropTypes.object,
+    toggleShowAll: PropTypes.func,
+    showAll: PropTypes.bool
   };
 
   render() {
